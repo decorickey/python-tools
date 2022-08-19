@@ -16,4 +16,5 @@ def calc_regular_investment(
 if __name__ == "__main__":
     calc_regular_investment()
     calc_regular_investment(investment_amount_per_month=100000)
+    calc_regular_investment(investment_amount_per_month=200000)
 
