@@ -1,7 +1,7 @@
-def calc_regular_investment(
+def calc_regular_investment_result(
     investment_amount_per_month: int = 50000,
     investment_range_year: int = 20,
-    return_on_investment_percent: int = 5
+    return_on_investment_percent: int = 5,
 ):
     investment_amount_per_year = investment_amount_per_month * 12
     simple_result, regular_result = 0, 0
@@ -13,8 +13,15 @@ def calc_regular_investment(
     return simple_result, regular_result
 
 
+def calc_regular_investment_amount(
+    investment_range_year: int = 10,
+    target_amount: int = 100_000_000,
+    return_on_investment_percent: int = 5,
+):
+    pass
+
+
 if __name__ == "__main__":
-    calc_regular_investment()
-    calc_regular_investment(investment_amount_per_month=100000)
-    calc_regular_investment(investment_amount_per_month=200000)
+    calc_regular_investment_result()
+    calc_regular_investment_result(investment_amount_per_month=100000)
 
