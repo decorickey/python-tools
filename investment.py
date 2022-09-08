@@ -7,13 +7,15 @@ def calc_regular_investment_result(
     return_on_investment_percent: int = 5,
 ):
     investment_amount_per_year = investment_amount_per_month * 12
-    simple_result, regular_result = 0, 0
+    total_investment_amount, investment_result = 0, 0
     for i in range(investment_period_year):
-        simple_result += investment_amount_per_year
-        regular_result += investment_amount_per_year
-        regular_result *= 1 + return_on_investment_percent / 100
-        print(f"{i+1: >3}:{simple_result: >12,.0f}{regular_result: >12,.0f}{regular_result-simple_result: >12,.0f}")
-    return simple_result, regular_result
+        total_investment_amount += investment_amount_per_year
+        investment_result += investment_amount_per_year
+        investment_result *= 1 + return_on_investment_percent / 100
+        profit = investment_result - total_investment_amount
+        roi = profit / total_investment_amount * 100
+        print(f"{i+1: >3}:{total_investment_amount: >12,.0f}{investment_result: >12,.0f}{profit: >12,.0f}{roi: >8.1f}")
+    return total_investment_amount, investment_result
 
 
 def calc_regular_investment_amount(
