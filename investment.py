@@ -7,15 +7,18 @@ def calc_regular_investment_result(
     return_on_investment_percent: int = 5,
 ):
     investment_amount_per_year = investment_amount_per_month * 12
-    total_investment_amount, investment_result = 0, 0
+    investment_amount, investment_result = 0, 0
+    print()
+    print("<year>", "<investment amount>", "<investment result>", "<profit amount>", "<ROI>")
     for i in range(investment_period_year):
-        total_investment_amount += investment_amount_per_year
+        investment_amount += investment_amount_per_year
         investment_result += investment_amount_per_year
         investment_result *= 1 + return_on_investment_percent / 100
-        profit = investment_result - total_investment_amount
-        roi = profit / total_investment_amount * 100
-        print(f"{i+1: >3}:{total_investment_amount: >12,.0f}{investment_result: >12,.0f}{profit: >12,.0f}{roi: >8.1f}")
-    return total_investment_amount, investment_result
+        profit_amount = investment_result - investment_amount
+        roi = profit_amount / investment_amount * 100
+        print(f"{i+1: >6}", f"{investment_amount: >19,.0f}", f"{investment_result: >19,.0f}", f"{profit_amount: >15,.0f}", f"{roi: >5.0f}")
+    print()
+    return investment_amount, investment_result
 
 
 def calc_regular_investment_amount(
@@ -32,8 +35,7 @@ parser.add_argument("-p", "--investment-period-year", help="investment period ye
 parser.add_argument("-r", "--return-on-investment-percent", help="return on investment percent", type=int, required=True)
 args = parser.parse_args()
 
-result = calc_regular_investment_result(
+calc_regular_investment_result(
     args.investment_amount_per_month, args.investment_period_year, args.return_on_investment_percent
 )
-print(result)
 
